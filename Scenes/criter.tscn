@@ -1,16 +1,166 @@
 [gd_scene format=3 uid="uid://scg2d137jcve"]
 
-[sub_resource type="Gradient" id="Gradient_63lw4"]
-offsets = PackedFloat32Array(0.11111111, 0.45959595)
-colors = PackedColorArray(0, 0, 0, 1, 1, 0, 1, 1)
+[ext_resource type="Script" uid="uid://h3gp7ik8k6id" path="res://Scripts/criter.gd" id="1_21mmg"]
+[ext_resource type="Texture2D" uid="uid://bo8vwrtsbud5l" path="res://Assets/Enemies/orc_marvado_sprite-sheet-Photoroom.png" id="1_ydu6i"]
+[ext_resource type="Script" uid="uid://bq0sf0xhabowb" path="res://Scripts/fov_ogre.gd" id="2_u2ms1"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ydu6i"]
-gradient = SubResource("Gradient_63lw4")
-width = 32
-height = 32
-fill_from = Vector2(0, 1)
+[sub_resource type="Animation" id="Animation_ydu6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AreaAttack:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[node name="Criter" type="Node2D" unique_id=2111911699]
+[sub_resource type="Animation" id="Animation_21mmg"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10090011, 0.2, 0.3129635, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 6, 2, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AreaAttack:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3334, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_u2ms1"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_3ffo0"]
+resource_name = "walking"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.00390625),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2ms1"]
+_data = {
+&"RESET": SubResource("Animation_ydu6i"),
+&"attack": SubResource("Animation_21mmg"),
+&"idle": SubResource("Animation_u2ms1"),
+&"walking": SubResource("Animation_3ffo0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26lne"]
+size = Vector2(54, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2ms1"]
+size = Vector2(28.5, 22.5)
+
+[node name="Ogre" type="Area2D" unique_id=422975577]
+texture_filter = 1
+script = ExtResource("1_21mmg")
+speed = 90.0
+rotation_speed = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1677461995]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_u2ms1")
+autoplay = &"idle"
+
+[node name="FOV" type="Area2D" parent="." unique_id=2094441972]
+z_index = 2
+y_sort_enabled = true
+texture_filter = 1
+priority = 1
+script = ExtResource("2_u2ms1")
+
+[node name="vision_shape" type="CollisionPolygon2D" parent="FOV" unique_id=96059249]
+position = Vector2(130, 0)
+rotation = -3.1415927
+scale = Vector2(1.3, 0.9)
+polygon = PackedVector2Array(100, 0, 120, -79, 170, -67, 196, -41, 220, 0, 196, 41, 170, 67, 120, 79)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=247075518]
+position = Vector2(-2, -8.5)
+
+[node name="Collision" type="CollisionShape2D" parent="Body" unique_id=1790884138]
+shape = SubResource("RectangleShape2D_26lne")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=901819850]
-texture = SubResource("GradientTexture2D_ydu6i")
+texture_filter = 1
+position = Vector2(0, -38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ydu6i")
+offset = Vector2(15, 0)
+hframes = 4
+vframes = 4
+frame = 3
+
+[node name="Timer" type="Timer" parent="." unique_id=1262732157]
+autostart = true
+
+[node name="AreaAttack" type="CollisionShape2D" parent="." unique_id=1520899273]
+position = Vector2(-25, -32)
+shape = SubResource("RectangleShape2D_u2ms1")
+disabled = true

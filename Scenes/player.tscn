@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b2k5ej226qitc"]
 
-[ext_resource type="Script" uid="uid://b5jyanol2q6i8" path="res://Scenes/player.gd" id="1_6t5aa"]
+[ext_resource type="Script" uid="uid://b5jyanol2q6i8" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://hen63jqpvnx" path="res://Assets/Player/namelessHero.png" id="1_cvnsp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
-radius = 4.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(5, 2)
 
 [sub_resource type="Animation" id="Animation_6t5aa"]
 length = 0.001
@@ -619,12 +619,12 @@ blend_point_7/node = SubResource("AnimationNodeAnimation_qqcod")
 blend_point_7/pos = Vector2(0.5, -0.6)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pu2lt"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ukyrk"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7dp3o"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cvnsp"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tx1dd"]
 states/End/position = Vector2(687, 71)
@@ -633,15 +633,21 @@ states/Idle/position = Vector2(127.268265, 112)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_gymyn")
 states/Run/position = Vector2(293.26825, 112)
 states/Start/position = Vector2(-20, 112)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_pu2lt"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_ukyrk"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_7dp3o")]
+transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_ukyrk"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_7dp3o"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_cvnsp")]
 graph_offset = Vector2(-237.73174, -108.408806)
 
-[node name="Player" type="CharacterBody2D" unique_id=755526093]
+[node name="Player" type="CharacterBody2D" unique_id=755526093 groups=["player"]]
 scale = Vector2(3, 3)
+wall_min_slide_angle = 0.0
 script = ExtResource("1_6t5aa")
-speed = 250
+speed = 180
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=477787712]
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=854062580]
 texture_filter = 1
@@ -652,8 +658,11 @@ hframes = 30
 vframes = 7
 frame = 30
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=418470832]
-shape = SubResource("CircleShape2D_v0iea")
+[node name="Move Collision" type="CollisionShape2D" parent="." unique_id=418470832]
+visible = false
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_cvnsp")
+debug_color = Color(0.85710233, 0.00074333133, 0.8842277, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1270913094]
 libraries/ = SubResource("AnimationLibrary_vgqql")

@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://2856n2quv82k"]
 
 [ext_resource type="Texture2D" uid="uid://egvhfbrevch1" path="res://Assets/Merchant/Marchant.png" id="1_5u005"]
+[ext_resource type="Script" uid="uid://bneada3dcb45x" path="res://Scripts/merchant.gd" id="1_rp4tw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5u005"]
+radius = 59.0
 
 [sub_resource type="Animation" id="Animation_5u005"]
 length = 0.001
@@ -41,14 +45,21 @@ _data = {
 &"idle": SubResource("Animation_rp4tw")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5u005"]
-radius = 16.03122
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp4tw"]
+size = Vector2(46, 22)
 
-[node name="Merchant" type="Area2D" unique_id=894567308]
+[node name="Merchant" type="Area2D" unique_id=894567308 node_paths=PackedStringArray("dialog_box")]
+script = ExtResource("1_rp4tw")
+dialog_box = NodePath("Control/DialogBox")
+
+[node name="InteractionRange" type="CollisionShape2D" parent="." unique_id=646949153]
+visible = false
+show_behind_parent = true
+shape = SubResource("CircleShape2D_5u005")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1878083982]
 texture_filter = 1
-position = Vector2(0, -7)
+position = Vector2(0, -36)
 texture = ExtResource("1_5u005")
 hframes = 4
 
@@ -56,5 +67,51 @@ hframes = 4
 libraries/ = SubResource("AnimationLibrary_s08t2")
 autoplay = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=646949153]
-shape = SubResource("CircleShape2D_5u005")
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1254556173]
+visible = false
+
+[node name="BodyBlock" type="CollisionShape2D" parent="StaticBody2D" unique_id=1661081214]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_rp4tw")
+
+[node name="Control" type="Control" parent="." unique_id=1317140076]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogBox" type="Panel" parent="Control" unique_id=751498764]
+visible = false
+z_index = 2
+y_sort_enabled = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -40.0
+offset_right = 144.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="dialogo" type="Label" parent="Control/DialogBox" unique_id=1321202908]
+texture_filter = 1
+layout_mode = 0
+offset_right = 295.0
+offset_bottom = 1167.0
+text = "Testando dialogo seu player bostinha hahahahahah!"
+autowrap_mode = 3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

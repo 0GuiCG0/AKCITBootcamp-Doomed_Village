@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AIAssistantResource" format=3 uid="uid://0ckjfoddye40"]
+
+[ext_resource type="Resource" uid="uid://b0fti7g31ugs1" path="res://addons/ai_assistant_hub/llm_providers/gemini.tres" id="1_geio8"]
+[ext_resource type="Script" uid="uid://bukqnag83g6t4" path="res://addons/ai_assistant_hub/quick_prompts/ai_quick_prompt_resource.gd" id="2_fv75v"]
+[ext_resource type="Script" uid="uid://chs138kjsv7gm" path="res://addons/ai_assistant_hub/assistants/ai_assistant_resource.gd" id="3_wsjlb"]
+[ext_resource type="Texture2D" uid="uid://n4s421ta2dcr" path="res://icon.svg" id="4_fv75v"]
+
+[resource]
+script = ExtResource("3_wsjlb")
+type_name = "Geminino 2.5P"
+type_icon = ExtResource("4_fv75v")
+ai_model = "models/gemini-2.5-pro"
+llm_provider = ExtResource("1_geio8")
