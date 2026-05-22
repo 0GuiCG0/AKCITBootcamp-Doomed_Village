@@ -1,0 +1,13 @@
+# Devlog -
+
+## v0.1:
+### Inimigo (Ogro):
+- Programação antiga apagada
++ Nova programação base adicionada
++ Script de perseguição e flip de sprite
++ Desenha a FOV do Ogro
+- Animações não executadas (por enquanto)
+
+### Mercante:
++ Zona de interação funcional, com tecla de ação "E"
++ Aparece caixa de dialogo editavel por programação
