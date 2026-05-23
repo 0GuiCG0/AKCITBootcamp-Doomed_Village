@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://68wsnh0l1rsh"]
+
+[ext_resource type="Texture2D" uid="uid://dlq7m4sfngk5n" path="res://Assets/Houses/pixel-snapper-Photoroom.png" id="1_d0ksd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bur4o"]
+size = Vector2(59, 32)
+
+[node name="BHouse_m1" type="StaticBody2D" unique_id=848342817]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1408685062]
+position = Vector2(-0.5, -10)
+shape = SubResource("RectangleShape2D_bur4o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1567238582]
+z_index = 1
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(0, -24)
+texture = ExtResource("1_d0ksd")
+region_enabled = true
+region_rect = Rect2(2, 77, 60, 62)

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c1qitvj8vr6rw"]
+
+[ext_resource type="PackedScene" uid="uid://cd13okvxnkr7d" path="res://Scenes/forest.tscn" id="1_8j60k"]
+[ext_resource type="PackedScene" uid="uid://b2k5ej226qitc" path="res://Scenes/player.tscn" id="2_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://scg2d137jcve" path="res://Scenes/ogre.tscn" id="3_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://2856n2quv82k" path="res://Scenes/merchant.tscn" id="4_o06y3"]
+
+[node name="World" type="Node2D" unique_id=858065529]
+
+[node name="Forest" parent="." unique_id=1754007016 instance=ExtResource("1_8j60k")]
+
+[node name="Player" parent="." unique_id=755526093 instance=ExtResource("2_fo5ed")]
+position = Vector2(599, 609)
+
+[node name="Ogre" parent="." unique_id=422975577 instance=ExtResource("3_5ukr8")]
+position = Vector2(1072, 206)
+
+[node name="Ogre2" parent="." unique_id=308551835 instance=ExtResource("3_5ukr8")]
+position = Vector2(200, 585)
+
+[node name="Ogre3" parent="." unique_id=577786251 instance=ExtResource("3_5ukr8")]
+position = Vector2(350, 126)
+
+[node name="Merchant" parent="." unique_id=894567308 instance=ExtResource("4_o06y3")]
+position = Vector2(847, 555)

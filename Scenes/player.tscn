@@ -3,6 +3,48 @@
 [ext_resource type="Script" uid="uid://b5jyanol2q6i8" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://hen63jqpvnx" path="res://Assets/Player/namelessHero.png" id="1_cvnsp"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvnsp"]
+bg_color = Color(0.11278593, 0.0029719933, 0.00891598, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t5aa"]
+bg_color = Color(0.8189298, 0.011133677, 0.2156975, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgqql"]
+bg_color = Color(0.21152267, 0.17703675, 0.10775489, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkybt"]
+bg_color = Color(0.94177806, 0.67464143, 0.28681812, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3wgy"]
+bg_color = Color(0.20871013, 0.20871016, 0.20871004, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3smsa"]
+bg_color = Color(0.427757, 0.7922957, 0.4380257, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 6
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(5, 2)
 
@@ -642,6 +684,86 @@ scale = Vector2(3, 3)
 wall_min_slide_angle = 0.0
 script = ExtResource("1_6t5aa")
 speed = 180
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2037193319]
+
+[node name="hp" type="ProgressBar" parent="HUD" unique_id=1790349791]
+z_index = 5
+offset_left = 128.0
+offset_top = 24.0
+offset_right = 448.0
+offset_bottom = 48.0
+theme_override_styles/background = SubResource("StyleBoxFlat_cvnsp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6t5aa")
+value = 70.0
+rounded = true
+show_percentage = false
+
+[node name="Texto" type="Label" parent="HUD/hp" unique_id=1427979562]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8152777, 5.7756904e-07, 0.46945333, 1)
+theme_override_constants/outline_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="holy_mana" type="ProgressBar" parent="HUD" unique_id=797468729]
+clip_children = 2
+light_mask = 5
+z_index = 5
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 104.0
+offset_bottom = 104.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vgqql")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fkybt")
+max_value = 20.0
+value = 11.0
+rounded = true
+fill_mode = 3
+show_percentage = false
+
+[node name="Texto" type="Label" parent="HUD/holy_mana" unique_id=4632563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.7880643, 0.39998025, 0.083325274, 1)
+theme_override_constants/outline_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="xp" type="ProgressBar" parent="HUD" unique_id=1018430077]
+z_index = 5
+offset_left = 128.0
+offset_top = 88.0
+offset_right = 288.0
+offset_bottom = 104.0
+theme_override_styles/background = SubResource("StyleBoxFlat_x3wgy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3smsa")
+value = 67.0
+show_percentage = false
+
+[node name="Texto" type="Label" parent="HUD/xp" unique_id=19484241]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.59607846, 0.5294118, 0.06666667, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=477787712]
 zoom = Vector2(2.5, 2.5)

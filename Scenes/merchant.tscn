@@ -67,10 +67,10 @@ hframes = 4
 libraries/ = SubResource("AnimationLibrary_s08t2")
 autoplay = &"idle"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1254556173]
+[node name="Body" type="StaticBody2D" parent="." unique_id=1254556173]
 visible = false
 
-[node name="BodyBlock" type="CollisionShape2D" parent="StaticBody2D" unique_id=1661081214]
+[node name="BodyBlock" type="CollisionShape2D" parent="Body" unique_id=1661081214]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_rp4tw")
 
