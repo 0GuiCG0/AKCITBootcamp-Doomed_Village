@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bhv5oaq57moe" path="res://Scenes/tree.tscn" id="5_u4r74"]
 [ext_resource type="PackedScene" uid="uid://qverq3xb53cr" path="res://Scenes/tree_collection_cima.tscn" id="6_fvhfg"]
 [ext_resource type="PackedScene" uid="uid://hafte57xpa0s" path="res://Scenes/tree_collection_vertical.tscn" id="7_to3w2"]
+[ext_resource type="PackedScene" uid="uid://b2k5ej226qitc" path="res://Scenes/player.tscn" id="8_oeofd"]
+[ext_resource type="PackedScene" uid="uid://cossm2fxhg2w1" path="res://Scenes/dragon.tscn" id="9_oeofd"]
+[ext_resource type="Script" uid="uid://cj0wekew5a3r" path="res://Scenes/boss_thrigger.gd" id="10_oeofd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fvhfg"]
 texture = ExtResource("1_tdyf8")
@@ -992,6 +995,9 @@ texture = ExtResource("1_tdyf8")
 [sub_resource type="TileSet" id="TileSet_to3w2"]
 sources/0 = SubResource("TileSetAtlasSource_fvhfg")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82d7c"]
+size = Vector2(1216, 587)
+
 [node name="RaidingVillage" type="Node2D" unique_id=759554886]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=977769871]
@@ -1135,3 +1141,19 @@ position = Vector2(-61, 396)
 
 [node name="TreeCollection8" parent="Trees/LadoL" unique_id=1227921124 instance=ExtResource("7_to3w2")]
 position = Vector2(-61, 146)
+
+[node name="Player" parent="." unique_id=755526093 instance=ExtResource("8_oeofd")]
+position = Vector2(311, 31)
+
+[node name="Dragon" parent="." unique_id=1916711295 instance=ExtResource("9_oeofd")]
+position = Vector2(864.99994, 329)
+scale = Vector2(1.2283814, 1.1723502)
+
+[node name="BossTrigger" type="Area2D" parent="." unique_id=1608370749]
+script = ExtResource("10_oeofd")
+boss_node = NodePath("../Dragon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossTrigger" unique_id=27949294]
+visible = false
+position = Vector2(662, 422)
+shape = SubResource("RectangleShape2D_82d7c")

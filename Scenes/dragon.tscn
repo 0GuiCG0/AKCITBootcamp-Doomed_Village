@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cossm2fxhg2w1"]
+
+[ext_resource type="Script" uid="uid://cdjf1lxhqm2vt" path="res://Scripts/dragon_enemy.gd" id="1_mtyor"]
+[ext_resource type="Texture2D" uid="uid://ddktmernbcnmk" path="res://Assets/Enemies/dragon_idle-Photoroom.png" id="2_d8ryr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtyor"]
+size = Vector2(155, 81)
+
+[node name="Dragon" type="CharacterBody2D" unique_id=1311409626]
+script = ExtResource("1_mtyor")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1913885972]
+texture = ExtResource("2_d8ryr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=139736128]
+position = Vector2(44, 130)
+shape = SubResource("RectangleShape2D_mtyor")
