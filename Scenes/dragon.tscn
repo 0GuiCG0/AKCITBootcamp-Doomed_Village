@@ -10,6 +10,7 @@ size = Vector2(155, 81)
 script = ExtResource("1_mtyor")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1913885972]
+texture_filter = 1
 texture = ExtResource("2_d8ryr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=139736128]
