@@ -67,8 +67,8 @@ var move_direction: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
-	$PivotAtaque/Slash/HitboxSlash/CollisionShape2D.set_deferred("disabled", true)
-	$PivotAtaque/Smite/HitboxSmite/CollisionShape2D.set_deferred("disabled", true)
+	area_slash.set_deferred("monitoring", true)
+	area_smite.set_deferred("monitoring", true)
 	sprite_base_position = sprite.position
 	current_hp = max_hp
 	current_mana = max_mana

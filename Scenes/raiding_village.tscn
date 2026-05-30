@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://qverq3xb53cr" path="res://Scenes/tree_collection_cima.tscn" id="6_fvhfg"]
 [ext_resource type="PackedScene" uid="uid://hafte57xpa0s" path="res://Scenes/tree_collection_vertical.tscn" id="7_to3w2"]
 [ext_resource type="PackedScene" uid="uid://cossm2fxhg2w1" path="res://Scenes/dragon.tscn" id="9_oeofd"]
-[ext_resource type="Script" uid="uid://cj0wekew5a3r" path="res://Scenes/boss_thrigger.gd" id="10_oeofd"]
+[ext_resource type="Script" uid="uid://cj0wekew5a3r" path="res://Scripts/boss_thrigger.gd" id="10_oeofd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fvhfg"]
 texture = ExtResource("1_tdyf8")

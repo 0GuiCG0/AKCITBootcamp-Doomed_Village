@@ -125,6 +125,10 @@ func morrer():
 
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
+	# Se o corpo detectado for o próprio Ogro, ignora e não faz nada!
+	if body == self:
+		return
+		
 	if body.has_method("tomar_dano"):
 		if not alvos_no_ataque.has(body):
 			alvos_no_ataque.append(body)

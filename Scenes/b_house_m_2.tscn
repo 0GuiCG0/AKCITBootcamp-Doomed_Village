@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bv0mupvip83k8"]
 
-[ext_resource type="Texture2D" uid="uid://dlq7m4sfngk5n" path="res://Assets/Houses/pixel-snapper-Photoroom.png" id="1_7tqyi"]
+[ext_resource type="Texture2D" uid="uid://bbwrskafvmhro" path="res://Assets/Houses/village_houses_raided.png" id="1_7tqyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3gry"]
 size = Vector2(56, 35)

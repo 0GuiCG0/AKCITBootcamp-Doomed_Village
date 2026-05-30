@@ -30,9 +30,8 @@ position = Vector2(609, 633)
 
 [node name="Merchant" parent="." unique_id=894567308 groups=["limpar_na_transicao"] instance=ExtResource("4_o06y3")]
 y_sort_enabled = true
-position = Vector2(830, 610)
+position = Vector2(800, 550)
 
 [node name="LivroSmite" parent="." unique_id=1826244280 groups=["limpar_na_transicao"] instance=ExtResource("5_fo5ed")]
-y_sort_enabled = true
-position = Vector2(540, 278)
+position = Vector2(286, 302)
 scale = Vector2(0.4, 0.4)
